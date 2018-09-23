@@ -59,7 +59,8 @@ public class StreamTest2 {
 			System.out.println("------------------------------------------");
 			
 			Map<Municipio,List<Alumno>> alumnoMunicipioMap = alumnos.stream().collect(Collectors.groupingBy(it -> it.getEscuela().getMunicipio()));
-//			print2(alumnoMunicipioMap);
+			printMap(alumnoMunicipioMap);
+			System.out.println("------------------------------------------");
 			alumnoMunicipioMap.forEach((municipio,it) -> System.out.println(municipio.getNombre() + "-" + it));
 //			System.out.println(alumnoMunicipioMap);
 
@@ -67,22 +68,21 @@ public class StreamTest2 {
 			System.out.println("DONE!");
 	}
 	
-	private void print (List<Object> lista) {
+	private void print (List<?> lista) {
 		System.out.println("------------------------------------------");
 		for (Object obj:lista)
 			System.out.println(obj);
 	}
-
-	private void print2 (Map<Object,List<Object>> map) {
+	
+	private <T,E> void printMap (Map<T, List<E>> object) {
 		System.out.println("------------------------------------------");
-		Set<Object> keys = map.keySet();
+		Set<T> keys = object.keySet();
 		for (Object obj:keys) {
-			List<Object> objs = map.get(obj);
-			System.out.println();
+			List<E> objs = object.get(obj);
+			System.out.println(obj);
 			for (Object objAux:objs) {
-				System.out.println(objAux);
+				System.out.println("\t"+objAux);
 			}
 		}
 	}
-
 }
