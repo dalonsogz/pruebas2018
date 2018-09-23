@@ -1,14 +1,11 @@
 package com.pruebas.tdd.anagrams;
 
-import static org.junit.jupiter.api.Assumptions.assumingThat;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -57,9 +54,13 @@ public class Anagrams {
 		}
 		
 		if (anagrams!=null) {
-			for (String anagram:anagrams)
-				System.out.print(anagram+",");
-			return ((String[])anagrams.toArray());
+			String[] result = new String[anagrams.size()];
+			int i = 0;
+			for (String anagram:anagrams) {
+				result[i++]=anagram;
+				System.out.print(anagram+"\t");
+			}
+			return (result);
 		} else {
 			return null;
 		}

@@ -1,6 +1,6 @@
 package com.pruebas.tdd.anagrams;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,9 @@ class AnagramsTests {
 	@Test
 	void test1() {
 		Anagrams anagrams = new Anagrams();
-		assertNotNull((String[])anagrams.calculate("deal"));
+		String[] results = anagrams.calculate("deal");
+		assertEquals("deal",results[0]);
+		assertEquals("lead",results[1]);
 	}
 
 //	private void verify(String testCase,int expected,String val) {
