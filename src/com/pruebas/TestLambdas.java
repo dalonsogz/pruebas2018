@@ -2,6 +2,7 @@ package com.pruebas;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -21,12 +22,19 @@ public class TestLambdas {
 
 	public static void main(String[] args) {
 		List<Usuario> names = new ArrayList<Usuario>();
-		names.add(new Usuario("Elivar", "Oswaldo", 10, new Direccion("San Pedro")));
+		names.add(new Usuario("Elivar", "Oswaldo", null, new Direccion("San Pedro")));
 		names.add(new Usuario("Antonio", "Carrion", 15, new Direccion("bellavista")));
 		names.add(new Usuario("Juan", "Andrade", 12, new Direccion("San Pedro1")));
 		names.add(new Usuario("Luis", "Aguilar", 17, new Direccion("San Pedro2")));
 		names.add(new Usuario("Fidel", "Narvaez", 8, new Direccion("San Pedro3")));
 		names.add(new Usuario("Paul", "Guevara", 5, new Direccion("San Pedro4")));
+		
+		// Test with optional age
+		Integer sum = names.stream()
+				.map ( a -> a.getEdad())
+				.reduce( 0, (a,b) -> a+b);
+		System.out.println("---->" + sum);
+		
 		// Predicate<Tipo>
 		// predicado: obtiene le número de usuarios con edad mayor 'eadad' años
 		int edad = 14;

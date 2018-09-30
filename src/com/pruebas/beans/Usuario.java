@@ -1,16 +1,18 @@
 package com.pruebas.beans;
 
+import java.util.Optional;
+
 public class Usuario {
 	 
 	private String nombre;
 	private String apellido;
-	private int edad;
+	private Optional<Integer> edad;
 	private Direccion dir;
  
-	public Usuario(String nombre, String apellido, int edad, Direccion dir) {
+	public Usuario(String nombre, String apellido, Integer edad, Direccion dir) {
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.edad = edad;
+		this.edad = Optional.ofNullable(edad);
 		this.dir=dir;
 	}
 		
@@ -34,12 +36,12 @@ public class Usuario {
 		this.apellido = apellido;
 	}
  
-	public int getEdad() {
-		return edad;
+	public Integer getEdad() {
+		return edad.orElse(0);
 	}
  
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setEdad(Integer edad) {
+		this.edad = Optional.of(edad);
 	}
  
  
